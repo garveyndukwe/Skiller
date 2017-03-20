@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @set_qualification.code %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @set_qualification.name %>
+</p>
+
+<p>
+  <strong>Display:</strong>
+  <%= @set_qualification.display %>
+</p>
+
+<%= link_to 'Edit', edit_set_qualification_path(@set_qualification) %> |
+<%= link_to 'Back', set_qualifications_path %>

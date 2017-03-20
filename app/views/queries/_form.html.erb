@@ -1,0 +1,81 @@
+<div class="span6">
+  <div class="content">
+
+    <div class="module">
+      <div class="module-head">
+        <h2>
+              <%= "Query Info" %>
+
+        </h2>
+      </div>
+
+
+      <div class="module-body ">
+
+        <%= form_for(@query, html: { class:"form-horizontal row-fluid" }) do |f| %>
+
+              <% if @query.errors.any? %>
+                <div id="error_explanation">
+                  <h2><%= pluralize(@query.errors.count, "error") %> prohibited this query from being saved:</h2>
+
+                  <ul>
+                  <% @query.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+                  </ul>
+                </div>
+              <% end %>
+
+            <div class="control-group">
+              <label class="control-label" for="basicinput" align="right">
+                <b>Display Name:</b>
+              </label>
+              <div class="controls">
+                <%= f.text_field :name, html_options={id:"basicinput", placeholder:"Unique name here..."} %>
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="basicinput" align="right">
+                <b>Feild Names:</b>
+              </label>
+              <div class="controls">
+                <%= f.text_field :fields, html_options={id:"basicinput", placeholder:"Unique name here..."} %>
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="basicinput" align="right">
+                <b>Where Clause:</b>
+              </label>
+              <div class="controls">
+                <%= f.text_field :where_clause, html_options={id:"basicinput", placeholder:"Unique name here..."} %>
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="basicinput" align="right">
+                <b>Query:</b>
+              </label>
+              <div class="controls">
+                <%= f.text_field :query, html_options={id:"basicinput", placeholder:"Actual query string..."} %>
+              </div>
+            </div>
+
+            <div class="module-option clearfix">
+
+              <div class="pull-right">
+
+                <% if @query.new_record? %>
+
+                    <%= button_to "Create  Query", { action: "create" },class:"btn btn-primary"  %>
+                <% elsif @query.persisted? %>
+                    <%= button_to "Update Query", { action: "update" },class:"btn btn-primary"  %>
+
+
+                <% end %>
+
+              </div>
+            </div> <!-- clearfix-->
+  </div>
+<% end %>
+        </div>
+  </div>
+</div>

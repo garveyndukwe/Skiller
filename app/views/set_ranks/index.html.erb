@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Set Ranks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Code</th>
+      <th>Name</th>
+      <th>Display</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @set_ranks.each do |set_rank| %>
+      <tr>
+        <td><%= set_rank.code %></td>
+        <td><%= set_rank.name %></td>
+        <td><%= set_rank.display %></td>
+        <td><%= link_to 'Show', set_rank %></td>
+        <td><%= link_to 'Edit', edit_set_rank_path(set_rank) %></td>
+        <td><%= link_to 'Destroy', set_rank, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Set rank', new_set_rank_path %>

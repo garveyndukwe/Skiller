@@ -1,0 +1,57 @@
+
+<div class="wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="span2">
+        <div class="sidebar">
+          <%= render "staffs/main_staff_menu"%>
+        </div>
+      </div>
+      <div class="span6">
+        <div class="content">
+
+          <div class="module">
+            <div class="module-head">
+              <h2>
+                Task Completed
+              </h2>
+            </div>
+
+
+            <div class="module-body ">
+              <ul>You have completed Skill record successfully</ul>
+              <p>
+                <strong>Oral score:</strong>
+                <%= @skill.oral_score %>
+              </p>
+
+              <p>
+                <strong>Written score:</strong>
+                <%= @skill.written_score %>
+              </p>
+
+              <p>
+                <strong>Analytic score:</strong>
+                <%= @skill.analytic_score %>
+              </p>
+
+              <p>
+                <strong>Computing score:</strong>
+                <%= @skill.computing_score %>
+              </p>
+              <div class="module-option clearfix">
+                  <%= link_to 'Edit', [:edit, @staff, @skill] ,class:"btn btn-primary"  %>|
+                  <%= link_to 'Continue',  new_staff_training_path([@staff, @training]) ,class:"btn btn-primary"  %>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+

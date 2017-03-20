@@ -1,0 +1,52 @@
+<div class="span2">
+          <div class="widget widget-menu unstyled">
+            <li class="active">
+              <%= link_to "Home", root_path, img:'menu-icon icon-bullhorn' %>
+            </li>
+            <% if @staff.nil? %>
+                <li class="active">
+                  <%= link_to "Personal Info", "#"  %>
+                </li>
+            <% else %>
+                <li class="inactive">
+                  <%= link_to "Personal Info","#"  %>
+                </li>
+            <% end %>
+            <% if @staff.nil? %>
+                <li class="active">
+                  <%= link_to 'Qualifications', "#" %>
+                </li>
+
+          <% else %>
+                <li class="disabled">
+                  <%#= link_to 'Qualifications', staff_staff_qualifications_path %>
+                </li>
+
+          <% end %>
+
+            <% if @staff.nil? %>
+                <li class="active">
+              <%= link_to 'Skills Acquired', "#" %>
+            </li>
+            <% else %>
+                <li class="inactive">
+                  <%= link_to 'Skills Acquired', '#' %>
+                </li>
+          <% end %>
+
+            <% if @staff.nil? %>
+
+            <li class="active">
+                <li class="active">
+                  <%= link_to 'Training needs', "#" %>
+                </li>
+
+          <% else %>
+                <li class="disbled">
+                  <%= link_to 'Training needs', '#' %>
+                </li>
+
+          <% end %>
+
+          </div>
+        </div>

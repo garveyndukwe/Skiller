@@ -1,0 +1,33 @@
+<header>
+  <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-inverse-collapse">
+        <i class="icon-reorder shaded"></i></a>
+        <%= link_to "SkillDB", root_path, class:'brand'  %>
+
+      <div class="nav-collapse collapse navbar-inverse-collapse">
+        <ul class="nav nav-icons">
+          <li class="active"><a href="#"><i class="icon-envelope"></i></a></li>
+          <li><a href="#"><i class="icon-eye-open"></i></a></li>
+          <li><a href="#"><i class="icon-bar-chart"></i></a></li>
+          <li><a href="/admin#index"><i class="icon-wrench"></i></a></li>
+        </ul>
+
+        <ul class="nav pull-right">
+
+         <li>
+             <%= link_to image_tag("black_admin_32.png",class:"nav-avatar"),'admin#index'%>
+          </li>
+          <li>
+            <%= link_to image_tag("user.png",class:"nav-avatar"),'user#show' %>
+          </li>
+
+        </ul>
+      </div>
+      <!-- /.nav-collapse -->
+    </div>
+  </div>
+  <!-- /navbar-inner -->
+</div>
+  </header>

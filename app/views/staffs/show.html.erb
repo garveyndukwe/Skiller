@@ -1,0 +1,41 @@
+
+<div class="wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="span2">
+        <div class="sidebar">
+          <%= render "staffs/main_staff_menu"%>
+        </div>
+      </div>
+      <div class="span6">
+        <div class="content">
+
+          <div class="module">
+            <div class="module-head">
+              <h2>
+                Task Completed
+              </h2>
+            </div>
+
+
+            <div class="module-body ">
+              <ul><%= @staff.last_name << ", " << @staff.first_name %>
+                <p>You have completed Personal record successfully. You may make changes with the edit button, or
+                  Click continue to rate your personal skills..</p>
+              </ul>
+              <div class="module-option clearfix">
+
+                <%= link_to 'Edit', [:edit, @staff, @skill] ,class:"btn btn-primary"  %>|
+                <%= link_to 'Continue', new_staff_skill_path(@staff),class:"btn btn-primary"  %>
+              </div> <!-- clearfix-->
+
+
+            </div>
+
+    </div>
+  </div>
+</div>
+
+    </div>
+  </div>
+</div>

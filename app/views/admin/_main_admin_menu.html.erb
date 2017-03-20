@@ -1,0 +1,46 @@
+<div class="span2">
+          <div class="widget widget-menu unstyled">
+            <li class="active">
+              <%= link_to "Dashboard", '/admin#dashboard', img:'menu-icon icon-bullhorn' %>
+            </li>
+            <li class="active">
+              <%= link_to "Gender", set_genders_path , img:'menu-icon icon-bullhorn' %>
+            </li>
+            <li class="active">
+              <b class="label green pull-right"><%=SetQualification.count%></b>
+              <%= link_to "Qualification", set_qualifications_path, img:'menu-icon icon-bullhorn' %>
+            </li>
+            <li class="active">
+              <b class="label green pull-right"><%=SetSpecilization.count%></b>
+              <%= link_to "Specilization", set_specilizations_path, img:'menu-icon icon-bullhorn' %>
+            </li>
+            <li class="active">
+              <b class="label green pull-right"><%=SetStation.count%></b>
+              <%= link_to "Station", set_stations_path, img:'menu-icon icon-bullhorn' %>
+            </li>
+
+            <li class="active">
+              <b class="label green pull-right"><%=SetDepartment.count%></b>
+              <%= link_to "Department", set_departments_path, img:'menu-icon icon-bullhorn' %>
+            </li>
+            <li class="active">
+              <b class="label green pull-right"><%=SetSection.count%></b>
+              <%= link_to "Section", set_sections_path, img:'menu-icon icon-bullhorn' %>
+            </li>
+
+            <li class="active">
+              <b class="label green pull-right"><%=Query.count%></b>
+              <%= link_to 'List Queries', queries_path %>
+            </li>
+            <li class="active">
+              <b class="label green pull-right"><%=Staff.count%></b>
+                  <%= link_to 'List Staff', staffs_path %>
+            </li>
+
+            <li class="active">
+              <b class="label green pull-right"><%=User.count%></b>
+              <%= link_to 'List Users', users_path %>
+            </li>
+
+          </div>
+        </div>

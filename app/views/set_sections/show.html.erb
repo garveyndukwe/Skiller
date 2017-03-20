@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @set_section.code %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @set_section.name %>
+</p>
+
+<p>
+  <strong>Display:</strong>
+  <%= @set_section.display %>
+</p>
+
+<%= link_to 'Edit', edit_set_section_path(@set_section) %> |
+<%= link_to 'Back', set_sections_path %>

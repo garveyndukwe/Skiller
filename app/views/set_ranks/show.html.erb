@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @set_rank.code %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @set_rank.name %>
+</p>
+
+<p>
+  <strong>Display:</strong>
+  <%= @set_rank.display %>
+</p>
+
+<%= link_to 'Edit', edit_set_rank_path(@set_rank) %> |
+<%= link_to 'Back', set_ranks_path %>

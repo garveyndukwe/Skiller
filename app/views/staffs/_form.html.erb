@@ -1,0 +1,180 @@
+<div class="span6">
+  <div class="content">
+
+    <div class="module">
+      <div class="module-head">
+        <h2>
+          <% if @staff.new_record? %>
+              <%= "New Personal Info" %>
+          <% else %>
+              <%= "Edit Personal Info" %>
+          <% end %>
+        </h2>
+      </div>
+
+
+      <div class="module-body ">
+
+        <%= form_for(@staff, html: { class:"form-horizontal row-fluid" }) do |f| %>
+            <% if @staff.errors.any? %>
+                <div class="alert">
+                  <button type="button" class="close" data-dismiss="alert">×</button>
+                  <strong>Warning!</strong>
+                  <h2><%= pluralize(@staff.errors.count, "error") %> prohibited this staff from being saved:</h2>
+
+                  <ul>
+                    <% @staff.errors.full_messages.each do |message| %>
+                        <li><%= message %></li>
+                    <% end %>
+                  </ul>
+                </div>
+            <% end %>
+
+            <div class="control-group">
+              <label class="control-label" for="basicinput" align="right">
+                <b>File number:</b>
+              </label>
+              <div class="controls">
+                <%= f.text_field :file_no, html_options={id:"basicinput", placeholder:"Dont type anything here..."} %>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label" for="basicinput" align="right">
+                <b><b>Lastname</b></b>
+              </label>
+              <div class="controls">
+                <%= f.text_field :last_name, html_options={id:"basicinput", placeholder:"Dont type anything here..."} %>
+
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label" for="basicinput" align="right">
+                <b><b>First name</b></b>
+              </label>
+              <div class="controls">
+                <%= f.text_field :first_name, html_options={id:"basicinput", placeholder:"Dont type anything here..."} %>
+
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label" for="basicinput" align="right">
+                <b><b>Middle name</b></b>
+              </label>
+              <div class="controls">
+                <%= f.text_field :middle_name, html_options={id:"basicinput", placeholder:"Dont type anything here..."} %>
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="basicinput" align="right">
+                <b><b>Gender</b></b>
+              </label>
+              <div class="controls">
+                <%=  f.collection_select :gender, SetGender.all, :code, :display, prompt: true, class:"select-field"%>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label" for="basicinput" align="right">
+                <b><b>Rank</b></b>
+              </label>
+              <div class="controls">
+                <%=  f.collection_select :rank, SetRank.all, :code, :display, prompt: true, class:"select-field"%>
+              </div>
+            </div>
+
+
+
+            <% if @staff.new_record? %>
+                <%# @test= Rank.new %>
+                <%# @test = Rank.find_by_code(:rank)%>
+                <%#= @staff.grade = @test.grade %>
+            <% end %>
+
+            <div class="control-group">
+              <label class="control-label" for="basicinput" align="right">
+                <b><b>Grade Level</b></b>
+              </label>
+              <div class="controls">
+                <%= f.number_field :grade, html_options={id:"basicinput", placeholder:"Dont type anything here..."} %>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label" for="basicinput" align="right">
+                <b><b>Step</b></b>
+              </label>
+              <div class="controls">
+                <%= f.number_field :step, html_options={id:"basicinput", placeholder:"Dont type anything here..."} %>
+              </div>
+            </div>
+
+
+            <div class="control-group">
+              <label class="control-label" for="basicinput" align="right">
+                <b><b>Qualification</b></b>
+              </label>
+              <div class="controls">
+                <%=  f.collection_select :qualification, SetQualification.all, :code, :name, prompt: true, class:"select-field"%>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label" for="basicinput" align="right">
+                <b><b>Area of Specialization</b></b>
+              </label>
+              <div class="controls">
+                <%=  f.collection_select :area_specialize, SetSpecilization.all, :code, :display, prompt: true, class:"select-field"%>
+              </div>
+            </div>
+
+
+            <div class="control-group">
+              <label class="control-label" for="basicinput" align="right">
+                <b><b>Current Station</b></b>
+              </label>
+              <div class="controls">
+                <%=  f.collection_select :station, SetStation.all, :code, :display, prompt: true, class:"select-field"%>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label" for="basicinput" align="right">
+                <b><b>Department</b></b>
+              </label>
+              <div class="controls">
+                <%=  f.collection_select :department, SetDepartment.all, :code, :display, prompt: true, class:"select-field"%>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label" for="basicinput" align="right">
+                <b><b>Section</b></b>
+              </label>
+              <div class="controls">
+                <%=  f.collection_select :section, SetSection.all, :code, :display, prompt: true, class:"select-field"%>
+              </div>
+            </div>
+
+            <div class="module-option clearfix">
+
+              <div class="pull-right">
+
+                <% if @staff.new_record? %>
+
+                        <%= button_to "Create Personal Record", { action: "create" },class:"btn btn-primary"  %>
+                <% elsif @staff.persisted? %>
+                        <%= button_to "Update Record", { action: "update" },class:"btn btn-primary"  %>
+                <% end %>
+
+              </div>
+            </div> <!-- clearfix-->
+
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>

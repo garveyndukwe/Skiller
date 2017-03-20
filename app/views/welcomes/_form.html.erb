@@ -1,0 +1,33 @@
+<%= form_for(@welcome) do |f| %>
+  <% if @welcome.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@welcome.errors.count, "error") %> prohibited this welcome from being saved:</h2>
+
+      <ul>
+      <% @welcome.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :index %><br>
+    <%= f.text_field :index %>
+  </div>
+  <div class="field">
+    <%= f.label :about %><br>
+    <%= f.text_field :about %>
+  </div>
+  <div class="field">
+    <%= f.label :login %><br>
+    <%= f.text_field :login %>
+  </div>
+  <div class="field">
+    <%= f.label :logout %><br>
+    <%= f.text_field :logout %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

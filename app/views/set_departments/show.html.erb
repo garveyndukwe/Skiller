@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @set_department.code %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @set_department.name %>
+</p>
+
+<p>
+  <strong>Display:</strong>
+  <%= @set_department.display %>
+</p>
+
+<%= link_to 'Edit', edit_set_department_path(@set_department) %> |
+<%= link_to 'Back', set_departments_path %>
