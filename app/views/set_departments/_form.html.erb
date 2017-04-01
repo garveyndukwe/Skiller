@@ -1,29 +1,61 @@
-<%= form_for(@set_department) do |f| %>
-  <% if @set_department.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@set_department.errors.count, "error") %> prohibited this set_department from being saved:</h2>
+<div class="span6">
+  <div class="content">
 
-      <ul>
-      <% @set_department.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+    <div class="module">
+      <div class="module-head">
+        <h2>
+          <%= "Set Department" %>
 
-  <div class="field">
-    <%= f.label :code %><br>
-    <%= f.text_field :code %>
+        </h2>
+      </div>
+
+
+      <div class="module-body ">
+
+        <%= form_for(@set_department) do |f| %>
+            <% if @set_department.errors.any? %>
+                <div id="error_explanation">
+                  <h2><%= pluralize(@set_department.errors.count, "error") %> prohibited this set_department from being
+                    saved:</h2>
+
+                  <ul>
+                    <% @set_department.errors.full_messages.each do |message| %>
+                        <li><%= message %></li>
+                    <% end %>
+                  </ul>
+                </div>
+            <% end %>
+
+            <div class="field">
+              <%= f.label :code %><br>
+              <%= f.text_field :code %>
+            </div>
+            <div class="field">
+              <%= f.label :name %><br>
+              <%= f.text_field :name %>
+            </div>
+            <div class="field">
+              <%= f.label :display %><br>
+              <%= f.text_field :display %>
+            </div>
+            <div class="module-option clearfix">
+
+              <div class="pull-right">
+
+                <% if @set_department.new_record? %>
+
+                    <%= button_to "Create Department", {action: "create"}, class: "btn btn-primary" %>
+                <% elsif @set_department.persisted? %>
+
+                    <%= button_to "Update Department", {action: "update"}, class: "btn btn-primary" %>
+
+
+                <% end %>
+
+              </div>
+            </div> <!-- clearfix-->
+            </div>
+        <% end %>
+        </div>
   </div>
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :display %><br>
-    <%= f.text_field :display %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

@@ -1,15 +1,22 @@
-<div class="span8">
+<div class="span6">
   <div class="content">
 
     <div class="module">
       <div class="module-head">
-        <h3>
-        </h3>
+        <h2>
+          <% if @skill.new_record? %>
+              <%= "New Skill Rating" %>
+          <% else %>
+              <%= "Edit  Skill Rating" %>
+          <% end %>
+        </h2>
       </div>
 
-      <div class="module-body">
 
-        <%= form_for([@staff, @skill], html: { class:"form-horizontal row-fluid" }) do |f| %>
+      <div class="module-body ">
+
+
+        <%= form_for([@staff, @skill], html: {class: "form-horizontal row-fluid"}) do |f| %>
             <% if @skill.errors.any? %>
                 <div id="error_explanation">
                   <h2><%= pluralize(@skill.errors.count, "error") %> prohibited this skills from being saved:</h2>
@@ -123,16 +130,41 @@
 
               </div>
             </div>
+            <div class="control-group">
 
 
+              <div class="controls">
+                <label class="control-label">Rate your Technical skills</label>
+                <label class="radio inline">
+                  <%= f.radio_button(:technical_score, 'Poor') %>
+                  Poor
+                </label>
+                <label class="radio inline">
+                  <%= f.radio_button(:technical_score, 'Average') %>
+                  Average
+                </label>
+                <label class="radio inline">
+                  <%= f.radio_button(:technical_score, 'Good') %>
+                  Good
+                </label>
+                <label class="radio inline">
+                  <%= f.radio_button(:technical_score, 'Very good') %>
+                  Very Good
+                </label>
 
-
+              </div>
+            </div>
 
             <div class="module-option clearfix">
 
               <div class="pull-right">
 
-                <%= f.submit   %>
+                <% if @skill.new_record? %>
+
+                    <%= button_to "Create Skills", {action: "create"}, class: "btn btn-primary" %>
+                <% elsif @skill.persisted? %>
+                    <%= button_to "Update Skills", {action: "update"}, class: "btn btn-primary" %>
+                <% end %>
 
               </div>
             </div> <!-- clearfix-->
@@ -143,4 +175,3 @@
     </div>
   </div>
 </div>
-

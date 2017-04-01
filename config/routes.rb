@@ -1,37 +1,59 @@
 Rails.application.routes.draw do
 
-  resources :queries do
-    member do
-      get 'show_all'
-    end
-  end
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
 
+  devise_for :users, controllers: {sessions: 'users/sessions'}
+  devise_scope :user do
+    get 'sign_in', to: 'users/sessions#new'
+    get 'sign_up', to: 'users/registrations#new'
+    get 'sign_out', to: 'users/sessions#destroy'
+  end
+  # devise_for :users, skip: [:sessions]
+  # as :user do
+  #   get 'signin', to: 'devise/sessions#new', as: :new_user_session
+  #   post 'signin', to: 'devise/sessions#create', as: :user_session
+  #   match 'signout', to: 'devise/sessions#destroy', as: :destroy_user_session, via: Devise.mappings[:user].sign_out_via
+  # end
+
+  #get 'admin#chart'
   # You can have the root of your site routed with "root"
 
   root to: 'welcomes#index'
+  get 'welcome/search' => 'welcomes#search'
   #devise_for :users
-  resources :staffs do
+
+  resources :charts do
+    resource :tickers
+  end
+
+  resources :users do
+    resources :staffs do
     member do
-      get 'display'
+      get 'display' => 'staffs/search'
+      get 'search'
     end
     resources :skills
     resources :trainings
+    resources :proffessionals
+    resources :academics
+    resources :schools
+    resources :specializations
   end
+  end
+
+
   resources :admin
-
-
-  resources :users
+  resources :queries
   resources :set_sections
   resources :set_departments
   resources :set_stations
-  resources :set_specilizations
+  resources :set_specializations
   resources :set_qualifications
   resources :set_ranks
   resources :set_genders
-  #get 'admin#index'
-  #get 'admin#dashboard'
+  resources :set_schools
+  resources :set_courses
+  resources :set_grades
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -1,5 +1,6 @@
 class AdminController < ApplicationController
   #before_action :set_admin, only: [:dashboard, :destroy]
+  before_action :authenticate_user!
   def index
   end
 
@@ -9,9 +10,14 @@ end
 
   def dashboard
   end
+
+  def chart
+    @query=Query.first
+  end
   def destroy
 
   end
+
   private
   def set_admin
     @admin = User.find(params[:id])

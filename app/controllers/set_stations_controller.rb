@@ -28,8 +28,8 @@ class SetStationsController < ApplicationController
 
     respond_to do |format|
       if @set_station.save
-        format.html { redirect_to @set_station, notice: 'Set station was successfully created.' }
-        format.json { render :show, status: :created, location: @set_station }
+        format.html { redirect_to set_stations_path, notice: 'Set station was successfully created.' }
+        format.json { render :index, status: :created, location: @set_stations }
       else
         format.html { render :new }
         format.json { render json: @set_station.errors, status: :unprocessable_entity }
@@ -42,8 +42,8 @@ class SetStationsController < ApplicationController
   def update
     respond_to do |format|
       if @set_station.update(set_station_params)
-        format.html { redirect_to @set_station, notice: 'Set station was successfully updated.' }
-        format.json { render :show, status: :ok, location: @set_station }
+        format.html { redirect_to set_stations_path, notice: 'Set station was successfully updated.' }
+        format.json { render :index, status: :ok, location: @set_stations }
       else
         format.html { render :edit }
         format.json { render json: @set_station.errors, status: :unprocessable_entity }

@@ -8,21 +8,18 @@
                   <%= link_to "Personal Info", "#"  %>
                 </li>
             <% else %>
-                <li class="inactive">
+                <li class="disabled">
                   <%= link_to "Personal Info","#"  %>
                 </li>
             <% end %>
-            <% if @staff.nil? %>
+
                 <li class="active">
-                  <%= link_to 'Qualifications', "#" %>
+                  <%= link_to 'Academic Info', "#" %>
                 </li>
-
-          <% else %>
                 <li class="disabled">
-                  <%#= link_to 'Qualifications', staff_staff_qualifications_path %>
+                  <%= link_to 'Proffessional Info', "#" %>
                 </li>
 
-          <% end %>
 
             <% if @staff.nil? %>
                 <li class="active">

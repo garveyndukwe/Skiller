@@ -1,30 +1,23 @@
-<div class="wrapper">
-  <div class="container">
-    <div class="row">
-      <div class="span2">
-        <div class="sidebar">
-          <%= render "admin/main_admin_menu"%>
-        </div>
+<div class="span9">
+  <ul>
+    <div class="btn-controls">
+      <div class="btn-box-row row-fluid">
+        <a href="#" class="btn-box big span4"><i class="icon-user"></i><b><%= pluralize(250, "Phd") %></b>
+          <p class="text-muted">Degrees</p>
+        </a>
+        <a href="#" class="btn-box big span4"><i class="icon-user"></i><b><%= pluralize(650, "Training") %></b>
+          <p class="text-muted"> Required</p>
+        </a>
+        <a href="#" class="btn-box big span4"><i class="icon-user"></i><b><%= pluralize(4300, "Researcher") %></b>
+          <p class="text-muted"> Registered</p>
+        </a>
+        <a href="#" class="btn-box big span4"><i class="icon-user"></i><b><%= pluralize(1300, "User") %></b>
+          <p class="text-muted">
+            Registered</p>
+        </a>
+
       </div>
-      <div class="span1">
-      </div>
-
-      <ul class="widget widget-usage unstyled span4">
-        <% @queries.each do |q| %>
-
-            <li>
-              <p>
-                 <strong><%= q.name %></strong>
-                 <span class="pull-right small muted"><%=Query.count%>%</span>
-              </p>
-               <div class="progress tight">
-                  <div class="bar" style="width: 78%;">
-                  </div>
-               </div>
-            </li>
-        <% end %>
-      </ul>
-
     </div>
-  </div>
+  </ul>
 </div>
+<!--/.content-->

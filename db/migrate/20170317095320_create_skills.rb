@@ -5,6 +5,7 @@ class CreateSkills < ActiveRecord::Migration
       t.string :written_score
       t.string :analytic_score
       t.string :computing_score
+      t.string :technical_score
 
       t.timestamps null: false
       t.references :staff, index: true

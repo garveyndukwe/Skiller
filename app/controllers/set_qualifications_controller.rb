@@ -28,8 +28,8 @@ class SetQualificationsController < ApplicationController
 
     respond_to do |format|
       if @set_qualification.save
-        format.html { redirect_to @set_qualification, notice: 'Set qualification was successfully created.' }
-        format.json { render :show, status: :created, location: @set_qualification }
+        format.html { redirect_to set_qualifications_path, notice: 'Set qualification was successfully created.' }
+        format.json { render :index, status: :created, location: @set_qualification }
       else
         format.html { render :new }
         format.json { render json: @set_qualification.errors, status: :unprocessable_entity }
@@ -42,8 +42,8 @@ class SetQualificationsController < ApplicationController
   def update
     respond_to do |format|
       if @set_qualification.update(set_qualification_params)
-        format.html { redirect_to @set_qualification, notice: 'Set qualification was successfully updated.' }
-        format.json { render :show, status: :ok, location: @set_qualification }
+        format.html { redirect_to set_qualifications_path, notice: 'Set qualification was successfully updated.' }
+        format.json { render :index, status: :ok, location: @set_qualification }
       else
         format.html { render :edit }
         format.json { render json: @set_qualification.errors, status: :unprocessable_entity }

@@ -19,14 +19,17 @@
 
 
             <div class="module-body ">
-              <ul><%= @staff.last_name << ", " << @staff.first_name %>
-                <p>You have completed Personal record successfully. You may make changes with the edit button, or
-                  Click continue to rate your personal skills..</p>
+              <ul><%= @staff.last_name << ", " << @staff.first_name << " " << @staff.middle_name %>
+                <p>You have completed Personal record successfully.</p>
+                <p> You may no do the following </p>
+                <li>Click Edit to make changes</li>
+                <li>Click Continue to fill your Academic data</li>
               </ul>
               <div class="module-option clearfix">
 
-                <%= link_to 'Edit', [:edit, @staff, @skill] ,class:"btn btn-primary"  %>|
-                <%= link_to 'Continue', new_staff_skill_path(@staff),class:"btn btn-primary"  %>
+                <%= link_to 'Edit', [:edit, @staff], class: "btn btn-primary" %>|
+                <%= link_to 'Continue', new_user_staff_academic_path(@staff), class: "btn btn-primary" %>
+
               </div> <!-- clearfix-->
 
 

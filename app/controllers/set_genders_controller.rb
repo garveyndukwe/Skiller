@@ -28,8 +28,8 @@ class SetGendersController < ApplicationController
 
     respond_to do |format|
       if @set_gender.save
-        format.html { redirect_to @set_gender, notice: 'Set gender was successfully created.' }
-        format.json { render :show, status: :created, location: @set_gender }
+        format.html { redirect_to set_genders_url, notice: 'Set gender was successfully created.' }
+        format.json { render :index, status: :created, location: @set_genders }
       else
         format.html { render :new }
         format.json { render json: @set_gender.errors, status: :unprocessable_entity }
@@ -42,8 +42,8 @@ class SetGendersController < ApplicationController
   def update
     respond_to do |format|
       if @set_gender.update(set_gender_params)
-        format.html { redirect_to @set_gender, notice: 'Set gender was successfully updated.' }
-        format.json { render :show, status: :ok, location: @set_gender }
+        format.html { redirect_to set_genders_url, notice: 'Set gender was successfully updated.' }
+        format.json { render :index, status: :ok, location: @set_genders }
       else
         format.html { render :edit }
         format.json { render json: @set_gender.errors, status: :unprocessable_entity }

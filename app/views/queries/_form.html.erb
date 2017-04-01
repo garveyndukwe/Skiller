@@ -25,7 +25,9 @@
                   </ul>
                 </div>
               <% end %>
-
+            <% if @query.new_record? %>
+                <% @query.query_code = getHex(2) %>
+            <% end %>
             <div class="control-group">
               <label class="control-label" for="basicinput" align="right">
                 <b>Display Name:</b>
@@ -34,6 +36,16 @@
                 <%= f.text_field :name, html_options={id:"basicinput", placeholder:"Unique name here..."} %>
               </div>
             </div>
+
+            <div class="control-group">
+              <label class="control-label" for="basicinput" align="right">
+                <b>Table Name:</b>
+              </label>
+              <div class="controls">
+                <%= f.collection_select :table_list, Table.all, :name, :name, prompt: true, class: "select-field" %>
+              </div>
+            </div>
+
             <div class="control-group">
               <label class="control-label" for="basicinput" align="right">
                 <b>Feild Names:</b>
@@ -50,13 +62,36 @@
                 <%= f.text_field :where_clause, html_options={id:"basicinput", placeholder:"Unique name here..."} %>
               </div>
             </div>
+
+
+            <div class="control-group">
+              <label class="control-label" for="basicinput" align="right">
+                <b>Code:</b>
+              </label>
+              <div class="controls">
+
+                <%= f.text_field :query_code, html_options={id: "basicinput", placeholder: "Actual query index..."} %>
+              </div>
+            </div>
+
             <div class="control-group">
               <label class="control-label" for="basicinput" align="right">
                 <b>Query:</b>
               </label>
               <div class="controls">
-                <%= f.text_field :query, html_options={id:"basicinput", placeholder:"Actual query string..."} %>
+
+                <%= f.text_area :query_string, html_options={id: "basicinput", placeholder: "Actual query string..."} %>
               </div>
+            </div>
+
+            <div class="control-group">
+              <label class="checkbox" align="right">
+                Count query:
+              </label>
+              <div class="checkbox inline">
+                <%= f.check_box :count, class: 'checkbox' %>
+              </div>
+
             </div>
 
             <div class="module-option clearfix">
@@ -67,6 +102,7 @@
 
                     <%= button_to "Create  Query", { action: "create" },class:"btn btn-primary"  %>
                 <% elsif @query.persisted? %>
+
                     <%= button_to "Update Query", { action: "update" },class:"btn btn-primary"  %>
 
 

@@ -1,6 +1,16 @@
-<h1>Editing Training</h1>
+<div class="wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="span2">
+        <div class="sidebar">
+          <%= render "staffs/main_staff_menu" %>
+        </div>
+      </div>
+      <div class="span2"></div>
+      <%= render "trainings/form" %>
+    </div>
+  </div>
+</div>
 
-<%= render 'form' %>
 
-<%= link_to 'Show', [@staff,@training] %> |
-<%= link_to 'Back', _back_url %>
+

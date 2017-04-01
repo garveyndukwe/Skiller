@@ -11,8 +11,28 @@
               <%= link_to "Qualification", set_qualifications_path, img:'menu-icon icon-bullhorn' %>
             </li>
             <li class="active">
-              <b class="label green pull-right"><%=SetSpecilization.count%></b>
-              <%= link_to "Specilization", set_specilizations_path, img:'menu-icon icon-bullhorn' %>
+              <b class="label green pull-right"><%= SetSchool.count %></b>
+              <%= link_to "Schools", set_schools_path, img: 'menu-icon icon-bullhorn' %>
+            </li>
+            <li class="active">
+              <b class="label green pull-right"><%= SetCourse.count %></b>
+              <%= link_to "Schools", set_courses_path, img: 'menu-icon icon-bullhorn' %>
+            </li>
+
+
+            <li class="active">
+              <b class="label green pull-right"><%= SetGrade.count %></b>
+              <%= link_to "Grades", set_grades_path, img: 'menu-icon icon-bullhorn' %>
+            </li>
+
+            <li class="active">
+              <b class="label green pull-right"><%= SetRank.count %></b>
+              <%= link_to "Rank", set_ranks_path, img: 'menu-icon icon-bullhorn' %>
+            </li>
+
+            <li class="active">
+              <b class="label green pull-right"><%= SetSpecialization.count %></b>
+              <%= link_to "Specialization", set_specializations_path, img: 'menu-icon icon-bullhorn' %>
             </li>
             <li class="active">
               <b class="label green pull-right"><%=SetStation.count%></b>
@@ -33,8 +53,14 @@
               <%= link_to 'List Queries', queries_path %>
             </li>
             <li class="active">
+              <b class="label green pull-right"><%= Chart.count %></b>
+              <%= link_to 'List Charts', charts_path %>
+
+
+            </li>
+            <li class="active">
               <b class="label green pull-right"><%=Staff.count%></b>
-                  <%= link_to 'List Staff', staffs_path %>
+              <%= link_to 'List Staff', users_path(@user) %>
             </li>
 
             <li class="active">

@@ -1,4 +1,18 @@
-<%= form_for(@set_gender) do |f| %>
+<div class="span6">
+  <div class="content">
+
+    <div class="module">
+      <div class="module-head">
+        <h2>
+          <%= "Set Gender" %>
+
+        </h2>
+      </div>
+
+
+      <div class="module-body ">
+
+        <%= form_for(@set_gender) do |f| %>
   <% if @set_gender.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@set_gender.errors.count, "error") %> prohibited this set_gender from being saved:</h2>
@@ -19,7 +33,24 @@
     <%= f.label :display %><br>
     <%= f.text_field :display %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+            <div class="module-option clearfix">
+
+              <div class="pull-right">
+
+                <% if @set_gender.new_record? %>
+
+                    <%= button_to "Create  Gender", {action: "create"}, class: "btn btn-primary" %>
+                <% elsif @set_gender.persisted? %>
+
+                    <%= button_to "Update Gender", {action: "update"}, class: "btn btn-primary" %>
+
+
+                <% end %>
+
+              </div>
+            </div> <!-- clearfix-->
+            </div>
+        <% end %>
+        </div>
   </div>
-<% end %>
+</div>

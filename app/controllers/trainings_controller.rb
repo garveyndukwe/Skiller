@@ -1,11 +1,13 @@
 class TrainingsController < ApplicationController
+  before_action :set_user
   before_action :set_staff
   before_action :set_training, only: [:show, :edit, :update, :destroy]
 
   # GET /trainings
   # GET /trainings.json
   def index
-    @trainings = Training.all
+    @trainings = Training.where(staff_id: params[:staff_id])
+    #@trainings = Training.all
   end
 
   # GET /trainings/1
@@ -63,6 +65,10 @@ class TrainingsController < ApplicationController
   end
 
   private
+  def set_user
+    @user = User.find(params[:id])
+  end
+
   def set_staff
     @staff = Staff.find(params[:staff_id])
   end

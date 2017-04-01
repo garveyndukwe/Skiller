@@ -15,7 +15,7 @@
 
       <div class="module-body ">
 
-        <%= form_for(@staff, html: { class:"form-horizontal row-fluid" }) do |f| %>
+        <%= form_for([@user, @staff], html: {class: "form-horizontal row-fluid"}) do |f| %>
             <% if @staff.errors.any? %>
                 <div class="alert">
                   <button type="button" class="close" data-dismiss="alert">×</button>
@@ -33,6 +33,7 @@
             <div class="control-group">
               <label class="control-label" for="basicinput" align="right">
                 <b>File number:</b>
+                <%= @user.email %>
               </label>
               <div class="controls">
                 <%= f.text_field :file_no, html_options={id:"basicinput", placeholder:"Dont type anything here..."} %>
@@ -117,7 +118,7 @@
                 <b><b>Qualification</b></b>
               </label>
               <div class="controls">
-                <%=  f.collection_select :qualification, SetQualification.all, :code, :name, prompt: true, class:"select-field"%>
+                <%= f.collection_select :qualification, SetQualification.all, :code, :display, prompt: true, class: "select-field" %>
               </div>
             </div>
 
@@ -126,7 +127,7 @@
                 <b><b>Area of Specialization</b></b>
               </label>
               <div class="controls">
-                <%=  f.collection_select :area_specialize, SetSpecilization.all, :code, :display, prompt: true, class:"select-field"%>
+                <%= f.collection_select :area_of_specialization, SetSpecialization.all, :code, :display, prompt: true, class: "select-field" %>
               </div>
             </div>
 

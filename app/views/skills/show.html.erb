@@ -7,6 +7,8 @@
           <%= render "staffs/main_staff_menu"%>
         </div>
       </div>
+      <div class="span1">
+      </div>
       <div class="span6">
         <div class="content">
 
@@ -19,7 +21,11 @@
 
 
             <div class="module-body ">
-              <ul>You have completed Skill record successfully</ul>
+              <ul><p>You have completed Skill record successfully.</p>
+                <p> You may no do the following </p>
+                <li>Click Edit to make changes</li>
+                <li>Click Continue to fill your Training data</li>
+              </ul>
               <p>
                 <strong>Oral score:</strong>
                 <%= @skill.oral_score %>
@@ -39,9 +45,13 @@
                 <strong>Computing score:</strong>
                 <%= @skill.computing_score %>
               </p>
+              <p>
+                <strong>Technical score:</strong>
+                <%= @skill.technical_score %>
+              </p>
               <div class="module-option clearfix">
                   <%= link_to 'Edit', [:edit, @staff, @skill] ,class:"btn btn-primary"  %>|
-                  <%= link_to 'Continue',  new_staff_training_path([@staff, @training]) ,class:"btn btn-primary"  %>
+                <%= link_to 'Continue', new_user_staff_training_path([@staff, @training]), class: "btn btn-primary" %>
               </div>
             </div>
 

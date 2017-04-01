@@ -1,4 +1,18 @@
-<%= form_for(@set_qualification) do |f| %>
+<div class="span6">
+  <div class="content">
+
+    <div class="module">
+      <div class="module-head">
+        <h2>
+          <%= "Set Academic Qualification" %>
+
+        </h2>
+      </div>
+
+
+      <div class="module-body ">
+
+        <%= form_for(@set_qualification) do |f| %>
   <% if @set_qualification.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@set_qualification.errors.count, "error") %> prohibited this set_qualification from being saved:</h2>
@@ -23,7 +37,24 @@
     <%= f.label :display %><br>
     <%= f.text_field :display %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+            <div class="module-option clearfix">
+
+              <div class="pull-right">
+
+                <% if @set_qualification.new_record? %>
+
+                    <%= button_to "Create Qualification", {action: "create"}, class: "btn btn-primary" %>
+                <% elsif @set_qualification.persisted? %>
+
+                    <%= button_to "Update Qualification", {action: "update"}, class: "btn btn-primary" %>
+
+
+                <% end %>
+
+              </div>
+            </div> <!-- clearfix-->
+            </div>
+        <% end %>
+        </div>
   </div>
-<% end %>
+</div>

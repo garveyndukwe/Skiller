@@ -28,8 +28,8 @@ class SetSectionsController < ApplicationController
 
     respond_to do |format|
       if @set_section.save
-        format.html { redirect_to @set_section, notice: 'Set section was successfully created.' }
-        format.json { render :show, status: :created, location: @set_section }
+        format.html { redirect_to set_sections_url, notice: 'Set section was successfully created.' }
+        format.json { render :index, status: :created, location: @set_sections }
       else
         format.html { render :new }
         format.json { render json: @set_section.errors, status: :unprocessable_entity }
@@ -42,8 +42,8 @@ class SetSectionsController < ApplicationController
   def update
     respond_to do |format|
       if @set_section.update(set_section_params)
-        format.html { redirect_to @set_section, notice: 'Set section was successfully updated.' }
-        format.json { render :show, status: :ok, location: @set_section }
+        format.html { redirect_to set_sections_url, notice: 'Set section was successfully updated.' }
+        format.json { render :index, status: :ok, location: @set_sections }
       else
         format.html { render :edit }
         format.json { render json: @set_section.errors, status: :unprocessable_entity }

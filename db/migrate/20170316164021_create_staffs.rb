@@ -7,8 +7,8 @@ class CreateStaffs < ActiveRecord::Migration
       t.string :middle_name
       t.string :rank
       t.string :gender
-      t.string :area_specialize
       t.string :qualification
+      t.string :area_of_specialization
       t.string :station
       t.string :department
       t.string :section
@@ -17,6 +17,7 @@ class CreateStaffs < ActiveRecord::Migration
       t.boolean :submitted
 
       t.timestamps null: false
+      t.references :user, index: true
     end
   end
 end

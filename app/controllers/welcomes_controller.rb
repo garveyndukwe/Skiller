@@ -1,4 +1,5 @@
 class WelcomesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_welcome, only: [:show, :edit, :update, :destroy]
 
   # GET /welcomes
@@ -7,6 +8,14 @@ class WelcomesController < ApplicationController
 
   end
 
+  def search
+    @staff = Staff.new
+    if params[:search]
+      @staff = Staff.search(params[:search])
+    else
+      @staff = Staff.find(params[:file_no])
+    end
+  end
   # GET /welcomes/1
   # GET /welcomes/1.json
   def show
@@ -14,7 +23,6 @@ class WelcomesController < ApplicationController
 
   # GET /welcomes/new
   def new
-
   end
 
   # GET /welcomes/1/edit

@@ -1,23 +1,32 @@
 class StaffsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :set_user
   before_action :set_staff, only: [:display,:show, :edit, :update, :destroy]
 
   # GET /staffs
   # GET /staffs.json
   def index
-    @staffs = Staff.all
+    @staffs = Staff.all.order("file_no DESC")
   end
-  def display
 
+  def display
   end
   # GET /staffs/1
   # GET /staffs/1.json
   def show
-
   end
 
+  def search
+    @staff = Staff.new
+    if params[:search]
+      @staff = Staff.search(params[:search])
+    else
+      @staff = Staff.find(params[:search])
+    end
+  end
   # GET /staffs/new
   def new
-    @staff = Staff.new
+    @staff = Staff.new(@user)
   end
 
   # GET /staffs/1/edit
@@ -27,7 +36,7 @@ class StaffsController < ApplicationController
   # POST /staffs
   # POST /staffs.json
   def create
-    @staff = Staff.new(staff_params)
+    @staff = @user.staff.new(staff_params)
 
     respond_to do |format|
       if @staff.save
@@ -65,16 +74,23 @@ class StaffsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+  def set_user
+    @user = User.find(params[:user_id])
+  rescue ActiveRecord::RecordNotFound
+    flash[:alert] = "The user could not be found."
+    redirect_to root_path
+  end
+
+  # Use callbacks to share common setup or constraints between actions.
     def set_staff
       @staff = Staff.find(params[:id])
     rescue ActiveRecord::RecordNotFound
       flash[:alert] = "The staff could not be found."
-      redirect_to staffs_path
+      redirect_to staff_path
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def staff_params
-      params.require(:staff).permit(:file_no, :last_name, :first_name, :middle_name, :rank, :gender, :area_specialize, :qualification, :station, :department, :section, :grade, :step, :submitted)
+      params.require(:staff).permit(:id, :file_no, :last_name, :first_name, :middle_name, :rank, :gender, :area_of_specialization, :qualification, :station, :department, :section, :grade, :step, :submitted)
     end
 end

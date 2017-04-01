@@ -5,18 +5,58 @@ class QueriesController < ApplicationController
   # GET /queries.json
   def index
     @queries = Query.all
+    #users = User.includes(:address)
+    #   users.each do |user|
+    #     user.address.city
+    #   end
+    #
+    # allows you to access the +address+ attribute of the +User+ model without
+    # firing an additional query. This will often result in a
+    # performance improvement over a simple +join+.
+    #
+    # You can also specify multiple relationships, like this:
+    #
+    #   users = User.includes(:address, :friends)
+    #
+    # Loading nested relationships is possible using a Hash:
+    #
+    #   users = User.includes(:address, friends: [:address, :followers])
+    #
   end
-  def show_all
-    #@query = execQuery
+
+  def chart_index
+    #@queries = Query.all
+    #@queries = Query.all
   end
   # GET /queries/1
   # GET /queries/1.json
   def show
-    msql = "SELECT distinct staffs.* FROM staffs WHERE gender ='F'"
-    @results =Staff.find_by_sql (msql)#@query.query)
-    to_query #self.execQuery(:id)  # select distinct staff.* from staffs order_by station
+    #msql = "SELECT distinct staffs.* FROM staffs WHERE gender ='F'"
+    #msql ="Select id, file_no, first_name, middle_name, last_name FROM STAFFS where qualification = 'MSC'"
+
+    if @query.query_string.nil?
+    else
+      msql = @query.query_string
+      #msql="SELECT s.* FROM staffs s WHERE s.gender = 'M'"
+      @result = ActiveRecord::Base.connection.exec_query(msql)
+
+      #@result = Staff.find_by_sql (msql)
+      #@results =Staff.find_each (msql) #(@query.query)
+    end
+
+
+    #result = ActiveRecord::Base.connection.exec_query('SELECT id, title, body FROM posts')
+    #  result =ActiveRecord::Result
+    #result =ActiveRecord::Calculations
+    #Product.count_by_sql "SELECT COUNT(*) FROM sales s, customers c WHERE s.customer_id = c.id"
+    #to_query #self.execQuery(:id)  # select distinct staff.* from staffs order_by station
+    # A simple SQL query spanning multiple tables
+    #   Post.find_by_sql "SELECT p.title, c.author FROM posts p, comments c WHERE p.id = c.post_id"
   end
 
+  def chart_show
+
+  end
   # GET /queries/new
   def new
     @query = Query.new
@@ -74,6 +114,6 @@ class QueriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def query_params
-      params.require(:query).permit(:name, :query)
+      params.require(:query).permit(:id, :name, :table_list, :query_code, :query_string, :where_clause, :fields)
     end
 end

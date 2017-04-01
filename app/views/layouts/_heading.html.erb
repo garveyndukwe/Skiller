@@ -16,12 +16,15 @@
 
         <ul class="nav pull-right">
 
-         <li>
-             <%= link_to image_tag("black_admin_32.png",class:"nav-avatar"),'admin#index'%>
-          </li>
-          <li>
-            <%= link_to image_tag("user.png",class:"nav-avatar"),'user#show' %>
-          </li>
+          <% if user_signed_in? %>
+              <li>
+                <%= content_tag(:a, href: destroy_user_session_path, class: "icon-signout") do -%>
+                <% end -%>
+              </li>
+          <% else %>
+              <li><%= content_tag(:a, href: new_user_session_path, class: "icon-signin") do -%>
+                <% end -%> </li>
+          <% end %>
 
         </ul>
       </div>

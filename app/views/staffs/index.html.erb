@@ -33,14 +33,14 @@
                   <th>Middle name</th>
                   <th>Rank</th>
                   <th>Gender</th>
-                  <th>Area Specialize</th>
+
                   <th>Qualiftn</th>
                   <th>Station</th>
                   <th>Dept.</th>
                   <th>Section</th>
                   <th>Grade</th>
                   <th>Step</th>
-                  <th>Submitted</th>
+                  <th>Locked</th>
                   <th></th>
                   <th></th>
                   <th colspan="3"></th>
@@ -58,15 +58,18 @@
                           <td class="cell-title"><%= staff.middle_name %></td>
                           <td class="cell-title"><%= staff.rank %></td>
                           <td class="cell-title"><%= staff.gender %></td>
-                          <td class="cell-title"><%= staff.area_specialize %></td>
+
                           <td class="cell-title"><%= staff.qualification %></td>
                           <td class="cell-title"><%= staff.station %></td>
                           <td class="cell-title"><%= staff.department %></td>
                           <td class="cell-title"><%= staff.section %></td>
                           <td class="cell-title"><%= staff.grade %></td>
                           <td class="cell-title"><%= staff.step %></td>
-                          <td class="cell-title"><%= staff.submitted %></td>
-                          <td><%= link_to 'Display', [:display,staff] %></td>
+                          <td class="cell-check"><%= staff.submitted %></td>
+                          <td><%= content_tag(:a, href: disply_user_staff_path(staff), class: "icon-eye-open") do -%>
+                            <% end -%>
+                          </td>
+                          <td><%#= link_to 'Display', [:display,staff] %></td>
                           <td><%= link_to 'Delete', staff, method: :delete, data: { confirm: 'Are you sure?' } %></td>
                         </tr>
                     <% else %>
@@ -78,7 +81,7 @@
                           <td class="cell-title"><%= staff.middle_name %></td>
                           <td class="cell-title"><%= staff.rank %></td>
                           <td class="cell-title"><%= staff.gender %></td>
-                          <td class="cell-title"><%= staff.area_specialize %></td>
+
                           <td class="cell-title"><%= staff.qualification %></td>
                           <td class="cell-title"><%= staff.station %></td>
                           <td class="cell-title"><%= staff.department %></td>
@@ -86,7 +89,7 @@
                           <td class="cell-title"><%= staff.grade %></td>
                           <td class="cell-title"><%= staff.step %></td>
                           <td class="cell-title"><%= staff.submitted %></td>
-                          <td><%= link_to 'Show', staff %></td>
+                          <td><%= link_to 'Display', [:display, staff] %></td>
                           <td><%= link_to 'Delete', staff, method: :delete, data: { confirm: 'Are you sure?' } %></td>
                         </tr>
 

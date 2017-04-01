@@ -1,40 +1,55 @@
+CREATE TABLE "academics" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "course" varchar, "certificate" varchar, "grade" varchar, "school" varchar, "admission_date" date, "graduation_date" date, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "staff_id" integer);
+CREATE TABLE "charts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "query_code" integer, "text" varchar, "icon" varchar, "chart_type" varchar, "passed" boolean DEFAULT 'f', "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL);
+CREATE TABLE "fields" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "vtype" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL);
+CREATE TABLE "proffessionals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "course" varchar, "certificate" varchar, "grade" varchar, "school" varchar, "admission_date" date, "graduation_date" date, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "staff_id" integer);
+CREATE TABLE "queries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "query_code" varchar, "table_list" varchar, "query_string" varchar, "fields" varchar, "where_clause" varchar, "count" boolean, "has_chart" boolean DEFAULT 'f', "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL);
 CREATE TABLE "schema_migrations" ("version" varchar NOT NULL);
-CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version");
-CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "username" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL);
-CREATE TABLE "staffs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "file_no" integer, "last_name" varchar, "first_name" varchar, "middle_name" varchar, "rank" varchar, "gender" varchar, "area_specialize" varchar, "qualification" varchar, "station" varchar, "department" varchar, "section" varchar, "grade" integer, "step" integer, "submitted" boolean, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL);
-CREATE TABLE "trainings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "code" varchar, "category" varchar, "title" varchar, "date_attended" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "staff_id" integer);
-CREATE INDEX "index_trainings_on_staff_id" ON "trainings" ("staff_id");
-CREATE TABLE "skills" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "oral_score" varchar, "written_score" varchar, "analytic_score" varchar, "computing_score" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "staff_id" integer);
-CREATE INDEX "index_skills_on_staff_id" ON "skills" ("staff_id");
+CREATE TABLE "set_departments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "code" varchar, "name" varchar, "display" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL);
 CREATE TABLE "set_genders" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "code" varchar, "display" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL);
+CREATE TABLE "set_qualifications" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "code" varchar, "name" varchar, "display" varchar, "school" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL);
 CREATE TABLE "set_ranks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "code" varchar, "name" varchar, "display" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL);
-CREATE TABLE "set_qualifications" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "code" varchar, "name" varchar, "display" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL);
+CREATE TABLE "set_schools" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "code" varchar, "name" varchar, "display" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL);
+CREATE TABLE "set_sections" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "code" varchar, "name" varchar, "display" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL);
+CREATE TABLE "set_specializations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "code" varchar, "name" varchar, "display" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL);
 CREATE TABLE "set_specilizations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "code" varchar, "name" varchar, "display" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL);
 CREATE TABLE "set_stations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "code" varchar, "name" varchar, "display" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL);
-CREATE TABLE "set_departments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "code" varchar, "name" varchar, "display" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL);
-CREATE TABLE "set_sections" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "code" varchar, "name" varchar, "display" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL);
-CREATE TABLE "queries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "query" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL);
-INSERT INTO schema_migrations (version) VALUES ('20170316163706');
-
-INSERT INTO schema_migrations (version) VALUES ('20170316164021');
-
-INSERT INTO schema_migrations (version) VALUES ('20170317095200');
-
-INSERT INTO schema_migrations (version) VALUES ('20170317095320');
-
-INSERT INTO schema_migrations (version) VALUES ('20170318173301');
-
-INSERT INTO schema_migrations (version) VALUES ('20170318173440');
-
-INSERT INTO schema_migrations (version) VALUES ('20170318173507');
-
-INSERT INTO schema_migrations (version) VALUES ('20170318173534');
-
-INSERT INTO schema_migrations (version) VALUES ('20170318173600');
-
-INSERT INTO schema_migrations (version) VALUES ('20170318173623');
-
-INSERT INTO schema_migrations (version) VALUES ('20170318173643');
-
-INSERT INTO schema_migrations (version) VALUES ('20170318233849');
-
+CREATE TABLE "skills" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "oral_score" varchar, "written_score" varchar, "analytic_score" varchar, "computing_score" varchar, "technical_score" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "staff_id" integer);
+CREATE TABLE "specializations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "code" varchar, "name" varchar, "display" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL);
+CREATE TABLE "staffs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "file_no" integer, "last_name" varchar, "first_name" varchar, "middle_name" varchar, "rank" varchar, "gender" varchar, "area_specialize" varchar, "qualification" varchar, "station" varchar, "department" varchar, "section" varchar, "grade" integer, "step" integer, "submitted" boolean, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL);
+CREATE TABLE "tables" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "vtype" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL);
+CREATE TABLE "tickers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "legend" varchar, "value" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "chart_id" integer);
+CREATE TABLE "trainings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "code" varchar, "category" varchar, "title" varchar, "date_attended" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "staff_id" integer);
+CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "username" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL);
+INSERT INTO "schema_migrations" ( "version" ) VALUES ( '20170316163706' );
+INSERT INTO "schema_migrations" ( "version" ) VALUES ( '20170316164021' );
+INSERT INTO "schema_migrations" ( "version" ) VALUES ( '20170317095200' );
+INSERT INTO "schema_migrations" ( "version" ) VALUES ( '20170317095320' );
+INSERT INTO "schema_migrations" ( "version" ) VALUES ( '20170318173301' );
+INSERT INTO "schema_migrations" ( "version" ) VALUES ( '20170318173440' );
+INSERT INTO "schema_migrations" ( "version" ) VALUES ( '20170318173507' );
+INSERT INTO "schema_migrations" ( "version" ) VALUES ( '20170318173534' );
+INSERT INTO "schema_migrations" ( "version" ) VALUES ( '20170318173600' );
+INSERT INTO "schema_migrations" ( "version" ) VALUES ( '20170318173623' );
+INSERT INTO "schema_migrations" ( "version" ) VALUES ( '20170318173643' );
+INSERT INTO "schema_migrations" ( "version" ) VALUES ( '20170318233849' );
+INSERT INTO "schema_migrations" ( "version" ) VALUES ( '20170323061502' );
+INSERT INTO "schema_migrations" ( "version" ) VALUES ( '20170325001958' );
+INSERT INTO "schema_migrations" ( "version" ) VALUES ( '20170326210508' );
+INSERT INTO "schema_migrations" ( "version" ) VALUES ( '20170326211029' );
+INSERT INTO "schema_migrations" ( "version" ) VALUES ( '20170328004539' );
+INSERT INTO "schema_migrations" ( "version" ) VALUES ( '20170329024352' );
+INSERT INTO "schema_migrations" ( "version" ) VALUES ( '20170329025319' );
+INSERT INTO "schema_migrations" ( "version" ) VALUES ( '20170329065741' );
+INSERT INTO "schema_migrations" ( "version" ) VALUES ( '20170329070029' );
+INSERT INTO "set_departments" ( "id","code","name","display","created_at","updated_at" ) VALUES ( '1','WPT','Wood and Paper Technology','Wood and Paper Technology','2017-03-29 07:26:29.578836','2017-03-29 07:26:29.578836' );
+INSERT INTO "set_genders" ( "id","code","display","created_at","updated_at" ) VALUES ( '1','F','Female','2017-03-29 07:10:49.031040','2017-03-29 07:10:49.031040' );
+INSERT INTO "set_genders" ( "id","code","display","created_at","updated_at" ) VALUES ( '2','M','Male','2017-03-29 07:30:19.567991','2017-03-29 07:30:19.567991' );
+INSERT INTO "set_qualifications" ( "id","code","name","display","school","created_at","updated_at" ) VALUES ( '1','OND','Odinary National Diploma','OND degree',NULL,'2017-03-29 07:11:29.051329','2017-03-29 07:11:29.051329' );
+INSERT INTO "set_qualifications" ( "id","code","name","display","school","created_at","updated_at" ) VALUES ( '2','HND','Higher National Diploma','HND Degree',NULL,'2017-03-29 07:12:25.336548','2017-03-29 07:12:25.336548' );
+INSERT INTO "set_qualifications" ( "id","code","name","display","school","created_at","updated_at" ) VALUES ( '3','BSC','Barchelors degree in Science','Barchelors degree in Science',NULL,'2017-03-29 07:12:52.272089','2017-03-29 07:12:52.272089' );
+INSERT INTO "set_qualifications" ( "id","code","name","display","school","created_at","updated_at" ) VALUES ( '4','MSC','Masters degree in Science','MSC Science degree',NULL,'2017-03-29 07:13:44.529078','2017-03-29 07:13:44.529078' );
+INSERT INTO "set_qualifications" ( "id","code","name","display","school","created_at","updated_at" ) VALUES ( '5','PHD','Doctor of Philosophy','PHD Degree',NULL,'2017-03-29 07:15:19.983538','2017-03-29 07:15:19.983538' );
+INSERT INTO "set_qualifications" ( "id","code","name","display","school","created_at","updated_at" ) VALUES ( '6','PHD','Doctor of Philosophy','PHD Degree',NULL,'2017-03-29 07:16:11.143464','2017-03-29 07:16:11.143464' );
+INSERT INTO "set_schools" ( "id","code","name","display","created_at","updated_at" ) VALUES ( '1','UI','University of Ibadan','University of Ibadan, Ibadan','2017-03-29 07:29:31.998270','2017-03-29 07:29:31.998270' );
+INSERT INTO "set_sections" ( "id","code","name","display","created_at","updated_at" ) VALUES ( '1','ICT','ICT Center','ICT Center','2017-03-29 07:27:51.541524','2017-03-29 07:27:51.541524' );
+INSERT INTO "set_stations" ( "id","code","name","display","created_at","updated_at" ) VALUES ( '1','FCF-Ibadan','Federal College of Forestry, Ibadan','Federal College of Forestry, Ibadan','2017-03-29 07:25:55.893910','2017-03-29 07:25:55.893910' );

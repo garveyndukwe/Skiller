@@ -28,8 +28,8 @@ class SetDepartmentsController < ApplicationController
 
     respond_to do |format|
       if @set_department.save
-        format.html { redirect_to @set_department, notice: 'Set department was successfully created.' }
-        format.json { render :show, status: :created, location: @set_department }
+        format.html { redirect_to set_departments_url, notice: 'Set department was successfully created.' }
+        format.json { render :index, status: :created, location: @set_departments }
       else
         format.html { render :new }
         format.json { render json: @set_department.errors, status: :unprocessable_entity }
@@ -42,8 +42,8 @@ class SetDepartmentsController < ApplicationController
   def update
     respond_to do |format|
       if @set_department.update(set_department_params)
-        format.html { redirect_to @set_department, notice: 'Set department was successfully updated.' }
-        format.json { render :show, status: :ok, location: @set_department }
+        format.html { redirect_to set_departments_url, notice: 'Set department was successfully updated.' }
+        format.json { render :index, status: :ok, location: @set_departments }
       else
         format.html { render :edit }
         format.json { render json: @set_department.errors, status: :unprocessable_entity }

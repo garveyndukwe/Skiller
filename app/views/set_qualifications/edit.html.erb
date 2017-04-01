@@ -1,6 +1,14 @@
-<h1>Editing Set Qualification</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @set_qualification %> |
-<%= link_to 'Back', set_qualifications_path %>
+<div class="wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="span2">
+        <div class="sidebar">
+          <%= render "admin/main_admin_menu" %>
+        </div>
+      </div>
+      <div class="span1">
+      </div>
+      <%= render "set_qualifications/form" %>
+    </div>
+  </div>
+</div>

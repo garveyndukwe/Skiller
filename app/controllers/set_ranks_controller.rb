@@ -28,8 +28,8 @@ class SetRanksController < ApplicationController
 
     respond_to do |format|
       if @set_rank.save
-        format.html { redirect_to @set_rank, notice: 'Set rank was successfully created.' }
-        format.json { render :show, status: :created, location: @set_rank }
+        format.html { redirect_to set_ranks_url, notice: 'Set rank was successfully created.' }
+        format.json { render :index, status: :created, location: @set_ranks }
       else
         format.html { render :new }
         format.json { render json: @set_rank.errors, status: :unprocessable_entity }
@@ -42,8 +42,8 @@ class SetRanksController < ApplicationController
   def update
     respond_to do |format|
       if @set_rank.update(set_rank_params)
-        format.html { redirect_to @set_rank, notice: 'Set rank was successfully updated.' }
-        format.json { render :show, status: :ok, location: @set_rank }
+        format.html { redirect_to set_ranks_url, notice: 'Set rank was successfully updated.' }
+        format.json { render :index, status: :ok, location: @set_ranks }
       else
         format.html { render :edit }
         format.json { render json: @set_rank.errors, status: :unprocessable_entity }

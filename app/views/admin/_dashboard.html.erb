@@ -7,36 +7,27 @@
                 <p class="text-muted">
                   Registered</p>
               </a>
-              <a href="#" class="btn-box big span4"><i class="icon-random"></i><b>65%</b>
+
+              <a href="#" class="btn-box big span4"><i class="icon-user"></i><b><%= pluralize(Staff.count, "Staff") %></b>
+                <p class="text-muted">
+                  Registered</p>
+              </a>
+              <a href="#" class="btn-box big span4"><i class="icon-random"></i><b><%= pluralize(Skill.count, 'Skill') %></b>
                 <p class="text-muted">
                   Skill Distribution</p>
               </a>
 
-              <a href="#" class="btn-box big span4"><i class="icon-bar-chart"></i><b>65%</b>
+              <a href="charts#index" class="btn-box big span4"><i class="icon-bar-chart"></i><b><%= pluralize(Chart.count, 'Chart') %></b>
                 <p class="text-muted">
                   Veiw Charts</p>
               </a>
 
-              <a href="queries#index" class="btn-box big span4"><i class="icon-question-sign"></i><b><%= Query.count%></b>
+              <a href=#queries#index"#" class="btn-box big span4"><i class="icon-question-sign"></i><b><%= pluralize(Query.count, 'Query') %></b>
                 <p class="text-muted">
-                  Queries</p>
+                  View Queries</p>
               </a>
 
 
-
-              <a href="#" class="btn-box big span4"><i class="icon-user"></i><b><%= pluralize(250,"Phd")%></b>
-                <p class="text-muted">Degrees</p>
-              </a>
-              <a href="#" class="btn-box big span4"><i class="icon-user"></i><b><%= pluralize(650,"Training")%></b>
-                <p class="text-muted"> Required</p>
-              </a>
-              <a href="#" class="btn-box big span4"><i class="icon-user"></i><b><%= pluralize(4300,"Researcher")%></b>
-                <p class="text-muted"> Registered</p>
-              </a>
-              <a href="#" class="btn-box big span4"><i class="icon-user"></i><b><%= pluralize(1300,"User")%></b>
-                <p class="text-muted">
-                  Registered</p>
-              </a>
             </div>
           </div>
         </ul>

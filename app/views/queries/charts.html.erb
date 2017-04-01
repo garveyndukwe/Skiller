@@ -1,0 +1,31 @@
+<div class="wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="span2">
+        <div class="sidebar">
+          <%= render "admin/main_admin_menu" %>
+        </div>
+      </div>
+      <div class="span1">
+      </div>
+
+      <ul class="widget widget-usage unstyled span4">
+        <% @queries.each do |q| %>
+
+            <li>
+              <p>
+                <strong><%= q.name %></strong>
+                <span class="pull-right small muted"><%= Query.count %>%</span>
+              </p>
+              <div class="progress tight">a
+                <div class="bar" style="width: 78%;">
+                </div>
+              </div>
+            </li>
+        <% end %>
+      </ul>
+
+    </div>
+  </div>
+</div>
+

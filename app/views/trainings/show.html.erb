@@ -1,27 +1,76 @@
-<p id="notice"><%= notice %></p>
+<div class="wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="span2">
+        <div class="sidebar">
+          <%= render "staffs/main_staff_menu" %>
+        </div>
+      </div>
+      <div class="span6">
+        <div class="content">
 
-<p>
-  <strong>Code:</strong>
-  <%= @training.code %>
-</p>
-
-<p>
-  <strong>Category:</strong>
-  <%= @training.category %>
-</p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @training.title %>
-</p>
-
-<p>
-  <strong>Date attended:</strong>
-  <%= @training.date_attended %>
-</p>
+          <div class="module">
+            <div class="module-head">
+              <h2>
+                Task Completed
+              </h2>
+            </div>
 
 
-<%= link_to 'Edit', [:edit, @staff, @training] %> |
-<%= link_to 'Back', _back_url %>  |
-<%= link_to 'Add Training', new_staff_training_path(@staff) %>
-<%= link_to 'Finish', staff_trainings_path(@staff) %>
+            <div class="module-body ">
+              <ul><%= @staff.last_name << ", " << @staff.first_name << " " << @staff.middle_name %>
+                <p>You have completed Skill record successfully.</p>
+                <p> You may no do the following </p>
+                <p>
+                <li>Click View to see all your trainings</li>
+                <li>Click Edit to make changes</li>
+                <li>Click Add to add another training</li>
+                <li>Click Finish to complete tasks and logout</li>
+                </p>
+              </ul>
+
+              <br>
+              <p>
+                <strong>Code:</strong>
+                <%= @training.code %>
+              </p>
+
+              <p>
+                <strong>Category:</strong>
+                <%= @training.category %>
+              </p>
+
+              <p>
+                <strong>Title:</strong>
+                <%= @training.title %>
+              </p>
+
+              <p>
+                <strong>Date attended:</strong>
+                <%= @training.date_attended %>
+              </p>
+
+              </ul>
+
+              <div class="module-option clearfix">
+                <%= link_to 'View', user_staff_trainings_path(@staff) %> |
+                <%= link_to 'Edit', [:edit, @staff, @training] %> |
+
+                <%= link_to 'Add ', new_user_staff_training_path(@staff) %>  |
+                <%= link_to 'Finish', root_path(@staff) %>
+              </div> <!-- clearfix-->
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
